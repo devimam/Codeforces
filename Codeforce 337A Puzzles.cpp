@@ -19,22 +19,13 @@ int main()
 
     sort(v.begin(), v.end());
 
-    vector<int> diff;
-    for(int i=1;i<m;i++){
-        diff.push_back(v[i]-v[i-1]);
-        ///cout<<v[i]-v[i-1]<<endl;
-    }
-
     int mindiff=INT_MAX;
-    for(int i=0;i<m-1;i++){
-        int last=i-1+n-1;
-        if(last>=m-1) break;
+    for(int i=0;i<m;i++){
+        int last=i+n-1;
+        if(last>=m) break;
 
-        int sum=0;
-        for(int j=i;j<=last;j++){
-            sum+=diff[j];
-        }
-        if(sum<mindiff) mindiff=sum;
+
+        if(v[last]-v[i]<mindiff) mindiff=v[last]-v[i];
     }
 
     cout<<mindiff<<endl;
